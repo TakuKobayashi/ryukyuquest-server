@@ -16,7 +16,15 @@ module.exports = {
     Monster.findOne({key: req.param('key')}).exec(function(err, monster){
       if (err) res.send(err);
       MstMonster.findOne({id: monster.mstMonsterId}).exec(function(err, mstMonster){
-        return res.json({user_hp: user.hp, monster_hp: monster.hp, monster_max_hp: mstMonster.maxHp});
+        User.findOne({id: req.user.id}).exec(function(err, user){
+          user.hp = user.hp - mstMonster.strength;
+          user.save(function(err,u){
+            monster.hp = monster.hp - user.strength;
+            monster.save(function(err,m){
+              return res.json({user_hp: u.hp, monster_hp: m.hp, monster_max_hp: mstMonster.maxHp});
+            });
+          });
+        });
       });
     });
   },
