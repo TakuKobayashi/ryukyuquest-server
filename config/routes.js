@@ -41,7 +41,7 @@ module.exports.routes = {
   'GET /masterdata/':'MasterDataController.index',
   'GET /battle/':'Battle.index',
   'POST /battle/attack':'Battle.attack',
-  'POST /battle/encount':'Battle.encount',
+  'GET /battle/encount':'Battle.encount',
 
   /***************************************************************************
   *                                                                          *
