@@ -23,12 +23,16 @@
     "sails": "~0.11.2",
     "sails-disk": "~0.10.0",
     "sails-hook-autoreload":"*",
-    "sails-db-migrate": "*",
+    "sails-db-migrate": "~1.1.0",
     "sails-mysql": "*",
     "node-uuid": "*",
     "log4js": "*",
     "twitter": "*",
-    "node-gcm": "*"
+    "node-gcm": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "passport-twitter": "*",
+    "db-migrate": "~0.9.23"
   },
   "scripts": {
     "debug": "node debug app.js",
