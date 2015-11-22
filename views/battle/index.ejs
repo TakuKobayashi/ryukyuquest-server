@@ -31,7 +31,7 @@
 $(function(){
   var user_hp = <%= user.hp %>;
   var monster_hp = <%= monster.hp %>;
-  var monster_max_hp = 100;
+  var monster_max_hp = <%= mstMonster.maxHp %>;
 
   $("#cola").click(function(){
     damage=1;

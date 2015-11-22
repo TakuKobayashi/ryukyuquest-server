@@ -8,10 +8,10 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'int'},
+    id: { type: 'integer'},
     name: { type: 'string'},
-    maxHp: { type: 'int'},
-    strength: { type: 'int'},
+    maxHp: { type: 'integer'},
+    strength: { type: 'integer'},
     imagePath: { type: 'string'},
   }
 };

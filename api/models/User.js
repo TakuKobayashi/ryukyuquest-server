@@ -9,9 +9,9 @@ module.exports = {
   attributes: {
     lastLoginedAt: { type: 'datetime'},
     authToken: { type: 'string'},
-    hp: { type: 'int'},
-    maxHp: { type: 'int'},
-    strength: { type: 'int', defaultValue: 10},
+    hp: { type: 'integer'},
+    maxHp: { type: 'integer'},
+    strength: { type: 'integer', defaultValue: 10},
     toJSON: function() {
       var obj = this.toObject();
       return obj;
@@ -19,6 +19,9 @@ module.exports = {
   },
   beforeCreate: function(user, cb) {
     user.lastLoginedAt = new Date();
+    user.hp = 100;
+    user.maxHp = 100;
+    user.strength = 10;
     cb();
   }
 };

@@ -8,11 +8,11 @@
 module.exports = {
 
   attributes: {
-    userId: { type: 'int'},
+    userId: { type: 'integer'},
     key: { type: 'string'},
-    hp: { type: 'int'},
+    hp: { type: 'integer'},
     encountedAt: { type: 'datetime'},
-    mstMonsterId: { type: 'int'},
+    mstMonsterId: { type: 'integer'},
     isActive: function() {
       var obj = this.toObject();
       var now = new Date();

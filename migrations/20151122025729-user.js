@@ -3,12 +3,12 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
   db.createTable('user', {
-    id: { type: 'int', primaryKey: true, autoIncrement: true },
+    id: { type: 'integer', primaryKey: true, autoIncrement: true },
     lastLoginedAt: { type: 'datetime', notNull: true },
     authToken: { type: 'string', notNull: true },
-    hp: { type: 'int', notNull: true, defaultValue: 100},
-    maxHp: { type: 'int', defaultValue: 100},
-    strength: { type: 'int', defaultValue: 10},
+    hp: { type: 'integer', notNull: true, defaultValue: 100},
+    maxHp: { type: 'integer', defaultValue: 100},
+    strength: { type: 'integer', defaultValue: 10},
     updatedAt: 'datetime',
     createdAt: 'datetime'
   }, function(){

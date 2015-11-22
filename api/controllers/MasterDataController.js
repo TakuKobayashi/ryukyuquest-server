@@ -7,8 +7,7 @@
 
 module.exports = {
   index: function(req, res) {
-    var fs = require('fs');
-    var mst = fs.readFileSync('./mst.json', 'utf8');
+  	
     return res.json(mst);
   }
 };

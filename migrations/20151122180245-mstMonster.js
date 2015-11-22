@@ -3,10 +3,10 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
 　db.createTable('mstMonster', {
-    id: { type: 'int', primaryKey: true, autoIncrement: true },
+    id: { type: 'integer', primaryKey: true, autoIncrement: true },
     name: { type: 'string'},
-    maxHp: { type: 'int', notNull: true, defaultValue: 0},
-    strength: { type: 'int', notNull: true, defaultValue: 0},
+    maxHp: { type: 'integer', notNull: true, defaultValue: 0},
+    strength: { type: 'integer', notNull: true, defaultValue: 0},
     imagePath: { type: 'string'},
     updatedAt: 'datetime',
     createdAt: 'datetime'

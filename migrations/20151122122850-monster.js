@@ -3,11 +3,11 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
 　db.createTable('monster', {
-    id: { type: 'int', primaryKey: true, autoIncrement: true },
-    userId: { type: 'int', notNull: true },
-    mstMonsterId: { type: 'int', notNull: true },
+    id: { type: 'integer', primaryKey: true, autoIncrement: true },
+    userId: { type: 'integer', notNull: true },
+    mstMonsterId: { type: 'integer', notNull: true },
     key: { type: 'string', notNull: true },
-    hp: { type: 'int', notNull: true,defaultValue: 0},
+    hp: { type: 'integer', notNull: true,defaultValue: 0},
     encountedAt: { type: 'datetime'},
     updatedAt: 'datetime',
     createdAt: 'datetime'
