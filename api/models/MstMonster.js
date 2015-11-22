@@ -11,7 +11,8 @@ module.exports = {
     id: { type: 'int'},
     name: { type: 'string'},
     maxHp: { type: 'int'},
-    strength: { type: 'int'}
+    strength: { type: 'int'},
+    imagePath: { type: 'string'},
   }
 };
 

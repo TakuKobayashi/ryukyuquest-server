@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'float'},
+    id: { type: 'int'},
     name: { type: 'string'},
     lat: { type: 'float'},
     lon: { type: 'float'},
