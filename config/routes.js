@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
   'POST /login': 'AuthController.login',
+  'GET /map/':'MapController.index',
 
   /***************************************************************************
   *                                                                          *
