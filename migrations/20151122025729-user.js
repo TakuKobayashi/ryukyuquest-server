@@ -6,6 +6,9 @@ exports.up = function(db, callback) {
     id: { type: 'int', primaryKey: true, autoIncrement: true },
     lastLoginedAt: { type: 'datetime', notNull: true },
     authToken: { type: 'string', notNull: true },
+    hp: { type: 'int', notNull: true, defaultValue: 100},
+    maxHp: { type: 'int', defaultValue: 100},
+    strength: { type: 'int', defaultValue: 10},
     updatedAt: 'datetime',
     createdAt: 'datetime'
   }, function(){

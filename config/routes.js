@@ -38,6 +38,9 @@ module.exports.routes = {
   'POST /login': 'AuthController.login',
   'GET /map/':'MapController.index',
   'GET /masterdata/':'MasterDataController.index',
+  'GET /battle/':'Battle.index',
+  'POST /battle/attack':'Battle.attack',
+  'POST /battle/encount':'Battle.encount',
 
   /***************************************************************************
   *                                                                          *

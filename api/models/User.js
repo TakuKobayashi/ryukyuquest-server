@@ -9,6 +9,9 @@ module.exports = {
   attributes: {
     lastLoginedAt: { type: 'datetime'},
     authToken: { type: 'string'},
+    hp: { type: 'int'},
+    maxHp: { type: 'int'},
+    strength: { type: 'int', defaultValue: 10},
     toJSON: function() {
       var obj = this.toObject();
       return obj;
