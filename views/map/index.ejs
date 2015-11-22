@@ -5,50 +5,64 @@
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 0, lng: 0},
       zoom: 0,
-      mapTypeControl: false
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    initGallPeters();
-    map.mapTypes.set('gallPeters', gallPetersMapType);
-    map.setMapTypeId('gallPeters');
+    setCustomMap();
+    map.data.setStyle(function(feature) {
+      return {
+        title: feature.getProperty('name'),
+        optimized: false
+      };
+    });
+    setUserPoint(0,0);
+  }
+
+  var userPoint = {
+    type: 'FeatureCollection',
+    features: [{
+      type: 'Feature',
+      geometry: {type: 'Point', coordinates: [0, 0]},
+      properties: {name: 'user'}
+    }]
+  }
+
+  function setUserPoint(lon, lat){
+    var myLatlng = new google.maps.LatLng(lon,lat);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      icon: 'images/user01.png',
+    });
+    marker.setMap(map);
   }
 
   var gallPetersMapType;
-  function initGallPeters() {
-    var GALL_PETERS_RANGE_X = 800;
-    var GALL_PETERS_RANGE_Y = 512;
+  function setCustomMap() {
+    var OKINAWA_MAP_RANGE_X = 8000;
+    var OKINAWA_MAP_RANGE_Y = 8000;
 
     // Fetch Gall-Peters tiles stored locally on our server.
     gallPetersMapType = new google.maps.ImageMapType({
       getTileUrl: function(coord, zoom) {
         var scale = 1 << zoom;
-
-        // Wrap tiles horizontally.
-        var x = ((coord.x % scale) + scale) % scale;
-
-        // Don't wrap tiles vertically.
-        var y = coord.y;
-        if (y < 0 || y >= scale) return null;
-
-        return 'images/gall-peters_' + zoom + '_' + x + '_' + y + '.png';
+        return 'images/okinawamap1.png';
       },
-      tileSize: new google.maps.Size(GALL_PETERS_RANGE_X, GALL_PETERS_RANGE_Y),
+      tileSize: new google.maps.Size(OKINAWA_MAP_RANGE_X, OKINAWA_MAP_RANGE_Y),
       isPng: true,
       minZoom: 0,
-      maxZoom: 1,
-      name: 'Gall-Peters'
+      maxZoom: 3,
+      name: 'okinawamap'
     });
 
-    // Describe the Gall-Peters projection used by these tiles.
     gallPetersMapType.projection = {
       fromLatLngToPoint: function(latLng) {
         var latRadians = latLng.lat() * Math.PI / 180;
         return new google.maps.Point(
-          GALL_PETERS_RANGE_X * (0.5 + latLng.lng() / 360),
-          GALL_PETERS_RANGE_Y * (0.5 - 0.5 * Math.sin(latRadians)));
+          OKINAWA_MAP_RANGE_X * (0.5 + latLng.lng() / 360),
+          OKINAWA_MAP_RANGE_Y * (0.5 - 0.5 * Math.sin(latRadians)));
       },
       fromPointToLatLng: function(point, noWrap) {
-        var x = point.x / GALL_PETERS_RANGE_X;
-        var y = Math.max(0, Math.min(1, point.y / GALL_PETERS_RANGE_Y));
+        var x = point.x / OKINAWA_MAP_RANGE_X;
+        var y = Math.max(0, Math.min(1, point.y / OKINAWA_MAP_RANGE_Y));
 
         return new google.maps.LatLng(
             Math.asin(1 - 2 * y) * 180 / Math.PI,
@@ -56,6 +70,8 @@
             noWrap);
       }
     };
+    map.mapTypes.set('gallPeters', gallPetersMapType);
+    map.setMapTypeId('gallPeters');
   }
 </script>
 <script
