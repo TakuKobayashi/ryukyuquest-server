@@ -8,28 +8,31 @@
 module.exports = {
   index: function(req, res) {
     Monster.findOne({key: req.param('key')}).exec(function(err, monster){
-      if (err) res.send(err);
-      return res.view({user: user, monster: monster});
+//      MstMonster.findOne({id: monster.mstMonsterId}).exec(function(err, mstMonster){
+        if (err) res.send(err);
+        return res.view({user: req.user, monster: monster});
+//      });
     });
   },
   attack: function(req, res) {
     Monster.findOne({key: req.param('key')}).exec(function(err, monster){
       if (err) res.send(err);
-      MstMonster.findOne({id: monster.mstMonsterId}).exec(function(err, mstMonster){
-        User.findOne({id: req.user.id}).exec(function(err, user){
-          user.hp = user.hp - mstMonster.strength;
-          user.save(function(err,u){
-            monster.hp = monster.hp - user.strength;
-            monster.save(function(err,m){
-              return res.json({user_hp: u.hp, monster_hp: m.hp, monster_max_hp: mstMonster.maxHp});
-            });
+        var user_hp = req.user.hp - 10;
+        var monster_hp = monster.hp - req.user.strength;
+//      MstMonster.findOne({id: monster.mstMonsterId}).exec(function(err, mstMonster){
+        User.update({hp: user_hp}, {id: req.user.id}).exec(function(err, user){
+          console.log(user);
+          Monster.update({hp: monster_hp},{id: monster.id}).exec(function(err,m){
+            console.log(m);
+            return res.json({user_hp: user_hp, monster_hp: monster_hp});
           });
         });
-      });
+//      });
     });
   },
   encount: function(req, res) {
     Monster.create({userId: req.user.id, mstMonsterId: req.param('mst_monster_id')}).exec(function(err, monster){
+
       if (err) res.send(err);
       return res.redirect("/battle/?key=" + monster.key);
     });

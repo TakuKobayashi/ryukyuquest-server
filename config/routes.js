@@ -35,12 +35,12 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'POST /login': 'AuthController.login',
+  'GET /login': 'AuthController.login',
   'GET /map/':'MapController.index',
   'GET /masterdata/':'MasterDataController.index',
   'GET /battle/':'Battle.index',
-  'POST /battle/attack':'Battle.attack',
-  'POST /battle/encount':'Battle.encount',
+  'GET /battle/attack':'Battle.attack',
+  'GET /battle/encount':'Battle.encount',
 
   /***************************************************************************
   *                                                                          *

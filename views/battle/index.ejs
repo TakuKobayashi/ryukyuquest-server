@@ -1,1 +1,74 @@
-hogehohge
+<!-- エネミーライフ -->
+<div class="hp">
+  <img class="hp_bg" src="/images/lifegage.png">
+  <img class="hp_cover" src="/images/art_00.png">
+  <span class="hp_gauge_wrap">
+    <span class="hp_gauge">
+      <img src="/images/stamina.png" class="hp_gauge_img">
+    </span>
+  </span>
+</div>
+
+<!-- エネミー画像 -->
+<div id="enemyImage">
+  <p id="cola">
+    <img src="/images/lastboss.png">
+  </p>
+</div>
+
+<!-- プレイヤーライフ -->
+<div class="player_hp">
+  <img class="player_hp_bg" src="/images/lifegage.png">
+  <img class="player_hp_cover" src="/images/art_01.png">
+	<span class="player_hp_gauge_wrap">
+		<span class="player_hp_gauge">
+			<img src="/images/stamina.png" class="player_hp_gauge_img">
+		</span>
+	</span>
+</div>
+
+<script>
+$(function(){
+  var user_hp = <%= user.hp %>;
+  var monster_hp = <%= monster.hp %>;
+  var monster_max_hp = 100;
+
+  $("#cola").click(function(){
+    damage=1;
+    var target=$(".hp .hp_gauge");
+    var i=0;
+    $.ajax({
+      url: '/battle/attack',
+      type:'POST',
+      dataType: 'json',
+      data : {key: '<%= monster.key %>'},
+      timeout:10000,
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert(XMLHttpRequest);
+      }
+    });
+  });
+
+  // フレームアニメーション
+  var id  = "animation";    //パラパラアニメを表示させるid
+  var width  = 75;    //表示させたいエリアの幅（px）
+  var height = 117;    //表示させたいエリアの高さ（px）
+  var fps    = 9;    //フレームレート（フレームス パー セコンド）
+  var src    = "images/user02_2.png";
+  var frame = 0;
+  var max_frame = 2;    //切替りのフレーム最大枚数
+  var onceFlg = true;
+
+  $(function(){
+    $("#"+id).css({
+        "background":"url("+src+")",
+        "width":width,
+        "height":height
+    });
+    var interval = 1/fps*1200;
+  });
+});
+</script>

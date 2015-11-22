@@ -1,10 +1,124 @@
 @CHARSET "UTF-8";
 
 html, body {
+  width:  100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color:   #bbb;
 }
 #map {
   height: 100%;
+}
+#enemyImage {
+    width:  100%;
+    text-align:  center;
+}
+
+#cola{
+    background: url("images/cola.png") no-repeat;
+    height:  800px;
+    width:  800px;
+    margin: auto;
+}
+#cola:active {
+    background-image:   url("images/cola.png");
+}
+
+/* 全体レイアウト */
+.hp{
+    margin: auto;
+    left: 0px;
+    top: 0px;
+    width: 533px;
+    height: 47px;
+    position: relative;
+}
+/* 枠画像 レイアウト */
+.hp .hp_bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+/* うずまきゲージ レイアウト */
+.hp_cover {
+    width:  533px;
+    height: 33px;
+    left: 3px;
+    top: 6px;
+    right: 5px;
+    bottom: 0px;
+    position: absolute;
+}
+/* ゲージ レイアウト */
+.hp .hp_gauge_wrap{
+    width:  533px;
+    height: 38px;
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 0px;
+    position: absolute;
+}
+/* 残りHP */
+.hp .hp_gauge{
+    width: 100%; /* ここの値で残りHPを表現する */
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+/* ゲージ画像 */
+.hp .hp_gauge_img{
+    width: 525px;
+    height: 38px;
+    position: relative;
+}
+
+/* 全体レイアウト */
+.player_hp{
+    margin: auto;
+    left: 0px;
+    top: 0px;
+    width: 533px;
+    height: 47px;
+    position: relative;
+}
+/* 枠画像 レイアウト */
+.player_hp .player_hp_bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+/* ゲージ レイアウト */
+.player_hp .player_hp_gauge_wrap{
+    width:  533px;
+    height: 38px;
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 0px;
+    position: absolute;
+}
+/* うずまきゲージ レイアウト */
+.player_hp_cover {
+    width:  533px;
+    height: 33px;
+    left: 3px;
+    top: 6px;
+    right: 5px;
+    bottom: 0px;
+    position: absolute;
+}
+/* 残りHP */
+.player_hp .player_hp_gauge{
+    width: 100%; /* ここの値で残りHPを表現する */
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+/* ゲージ画像 */
+.player_hp .plyaer_hp_gauge_img{
+    width: 525px;
+    height: 38px;
+    position: relative;
 }

@@ -30,7 +30,7 @@
     var myLatlng = new google.maps.LatLng(lon,lat);
     var marker = new google.maps.Marker({
       position: myLatlng,
-      icon: 'images/user01.png',
+      icon: '/images/user01.png',
     });
     marker.setMap(map);
   }
@@ -44,7 +44,7 @@
     gallPetersMapType = new google.maps.ImageMapType({
       getTileUrl: function(coord, zoom) {
         var scale = 1 << zoom;
-        return 'images/okinawamap1.png';
+        return '/images/okinawamap1.png';
       },
       tileSize: new google.maps.Size(OKINAWA_MAP_RANGE_X, OKINAWA_MAP_RANGE_Y),
       isPng: true,
