@@ -29,10 +29,14 @@ module.exports = {
     });
   },
   encount: function(req, res) {
-    MstMonster.findOne({id: req.param('mst_monster_id')}).exec(function(err, mstMonster){
-      Monster.create({userId: req.user.id, mstMonsterId: mstMonster.id, hp: mstMonster.maxHp}).exec(function(err, monster){
-        if (err) res.send(err);
-        return res.redirect("/battle/?key=" + monster.key);
+    User.findOne({authToken: req.param('authToken')}).exec(function(err, user){
+      req.logIn(user, function(err) {
+        MstMonster.findOne({id: req.param('mst_monster_id')}).exec(function(err, mstMonster){
+          Monster.create({userId: req.user.id, mstMonsterId: mstMonster.id, hp: mstMonster.maxHp}).exec(function(err, monster){
+            if (err) res.send(err);
+            return res.redirect("/battle/?key=" + monster.key);
+          });
+        });
       });
     });
   },
